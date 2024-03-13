@@ -96,13 +96,12 @@ function preload() {
 
      //Enemy sprite 
     //enemySpirte = loadImage("dog.png")
-    enemySprites = {
-        up: loadImage("assets/dog.png"),
-        down: loadImage("assets/dog.png"),
-        left: loadImage("assets/dogleft.png"),
-        right: loadImage("assassets/dogright.png")
+    enemySprites =  loadImage("assets/dog.png")
+       // down: loadImage("assets/dog.png")
+       // left: loadImage("assets/dogleft.png"),
+       // right: loadImage("assassets/dogright.png")
     }
-}
+
 
 function setup() {
     createCanvas(500, 500);
@@ -135,17 +134,9 @@ function setup() {
 
 
     //Create Enemy
-    enemy = new Enemy(enemySprites, 8,1, tileSize, enemySpeed, tilesize, tileRules);
+    enemy = new Enemy(enemySprites, 8, 8, tileSize, enemySpeed, tileSize, tileRules);
 
 
-    class Enemy {
-        constructor(sprite, x, y, size) {
-            this.enemySprites = sprite;
-            this.enemyx = x;
-            this.enemyy = y;
-            this.enemySize = tileSize;
-        }
-}
 }
 
 
@@ -488,6 +479,15 @@ function display() {
 
 
 
+class Enemy {
+    constructor(sprite, x, y, size) {
+        this.enemySprites = sprite;
+        this.enemyx = x;
+        this.enemyy = y;
+        this.enemySize = tileSize;
+        this.size = size;
+    }
+}
 
 
 
