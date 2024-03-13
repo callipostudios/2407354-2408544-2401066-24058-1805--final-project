@@ -96,7 +96,7 @@ function preload() {
 
      //Enemy sprite 
     //enemySpirte = loadImage("dog.png")
-    enemySprites =  loadImage("assets/dog.png")
+    //enemySprites =  loadImage("assets/dog.png")
        // down: loadImage("assets/dog.png")
        // left: loadImage("assets/dogleft.png"),
        // right: loadImage("assassets/dogright.png")
