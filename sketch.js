@@ -26,7 +26,7 @@ let playerSize = tileSize;
 //VARIABLES FOR ENEMY
 let enemy;
 let enemySprites = [];
-let enemySpeed = 5;
+//let enemySpeed = 5;
 let enemySize = tileSize;
 
 //VARIABLES FOR BULLETS
@@ -95,8 +95,7 @@ function preload() {
     }
 
      //Enemy sprite 
-    //enemySpirte = loadImage("dog.png")
-    //enemySprites =  loadImage("assets/dog.png")
+    enemySprites =  loadImage("assets/dog.png")
        // down: loadImage("assets/dog.png")
        // left: loadImage("assets/dogleft.png"),
        // right: loadImage("assassets/dogright.png")
@@ -134,7 +133,7 @@ function setup() {
 
 
     //Create Enemy
-    enemy = new Enemy(enemySprites, 8, 8, tileSize, enemySpeed, tileSize, tileRules);
+    enemy = new Enemy(enemySprites, 8, 8, tileSize, tileSize, tileRules);
 
 
 }
@@ -482,16 +481,17 @@ function display() {
 
 
 class Enemy {
-    constructor(sprite, x, y, enemySize) {
-        this.enemySprites = sprite;
+    constructor(sprite, x, y, tileSize) {
+        this.sprites = sprite;
         this.enemyx = x;
         this.enemyy = y;
         this.enemySize = tileSize;
+        
        
     }
     display() {
-        imageMode(CORNER);
-        image(this.enemySprites, 8, 1, this.xPos, this.yPos, this.size, this.size);
+        imageMode();
+        image(this.sprites, 8, 1, this.tileSize, tileSize);
     }
 }
 
