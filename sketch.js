@@ -486,12 +486,11 @@ class Enemy {
         this.enemyx = x;
         this.enemyy = y;
         this.enemySize = tileSize;
-        
        
     }
     display() {
-        imageMode();
-        image(this.sprites, 8, 1, this.tileSize, tileSize);
+        imageMode(CORNER);
+        image(this.sprites, 8, 1, tileSize, tileSize); // 8,1 is going by pixels but we want it to go by tile co ordinates
     }
 }
 
