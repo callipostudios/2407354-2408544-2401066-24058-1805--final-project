@@ -189,6 +189,8 @@ function game() {
 
     player.display();
     player.move();
+
+    enemy.display();
     
     //Bullets
     for(let i = 0; i < dots.length; i++){
@@ -486,6 +488,10 @@ class Enemy {
         this.enemyy = y;
         this.enemySize = tileSize;
         this.size = size;
+    }
+    display() {
+        imageMode(CORNER);
+        image(this.currentSprite, this.xPos, this.yPos, this.size, this.size);
     }
 }
 
