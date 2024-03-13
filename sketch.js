@@ -23,6 +23,12 @@ let playerSprites = [];
 let playerSpeed = 5;
 let playerSize = tileSize;
 
+//VARIABLES FOR ENEMY
+let enemy;
+let enemySprites = [];
+let enemySpeed = 5;
+let enemySize = tileSize;
+
 //VARIABLES FOR BULLETS
 let dots = [];
 let bullets = [];
@@ -85,6 +91,16 @@ function preload() {
         down: loadImage("assets/orangecat.png"),
         left: loadImage("assets/orangeleft.png"),
         right: loadImage("assets/orangeright.png")
+
+    }
+
+     //Enemy sprite 
+    //enemySpirte = loadImage("dog.png")
+    enemySprites = {
+        up: loadImage("assets/dog.png"),
+        down: loadImage("assets/dog.png"),
+        left: loadImage("assets/dogleft.png"),
+        right: loadImage("assassets/dogright.png")
     }
 }
 
@@ -116,7 +132,23 @@ function setup() {
         let d = new Dot(width/2, height/2);
         dots.push(d);
     }
+
+
+    //Create Enemy
+    enemy = new Enemy(enemySprites, 8,1, tileSize, enemySpeed, tilesize, tileRules);
+
+
+    class Enemy {
+        constructor(sprite, x, y, size) {
+            this.enemySprites = sprite;
+            this.enemyx = x;
+            this.enemyy = y;
+            this.enemySize = tileSize;
+        }
 }
+}
+
+
 
 // this creates a stage which flicks through the screens when needed, the game will always start with the start screen, then when clciked move into the game.
 
