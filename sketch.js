@@ -482,7 +482,7 @@ function display() {
 
 
 class Enemy {
-    constructor(sprite, x, y, size) {
+    constructor(sprite, x, y, enemySize) {
         this.enemySprites = sprite;
         this.enemyx = x;
         this.enemyy = y;
