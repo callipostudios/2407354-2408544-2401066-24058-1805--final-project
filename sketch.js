@@ -193,9 +193,9 @@ function game() {
     }
 
  // coins
- //image(coin, c1X, c1Y, cWidth, cHeight); - paused the game NEEDS FIXING
+ 
     
-    text('POINTS: ' , 5, 5);
+    text('POINTS: 0' + pointSystem , 5, 5);
     text('LIVES: 3', 205, 5); // come back to this wednesday
 
 
