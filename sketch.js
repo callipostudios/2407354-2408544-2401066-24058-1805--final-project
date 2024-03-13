@@ -487,11 +487,11 @@ class Enemy {
         this.enemyx = x;
         this.enemyy = y;
         this.enemySize = tileSize;
-        this.size = size;
+       
     }
     display() {
         imageMode(CORNER);
-        image(this.currentSprite, this.xPos, this.yPos, this.size, this.size);
+        image(this.enemySprites, 8, 1, this.xPos, this.yPos, this.size, this.size);
     }
 }
 
