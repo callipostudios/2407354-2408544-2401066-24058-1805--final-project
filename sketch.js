@@ -31,15 +31,15 @@ let bullets = [];
 let graphicMap = [ 
 //         THIS IS OUR Y AXIS
 //   0  1  2  3  4  5  6  7  8  9 
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // 0
+    [0, 0, 0, 0, 0, 2, 0, 0, 0, 0], // 0
     [0, 0, 0, 0, 0, 0, 0, 0, 1, 0], // 1
     [0, 0, 0, 1, 0, 0, 0, 0, 0, 0], // 2
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // 3
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // 4    THIS IS OUR X AXIS
+    [0, 0, 0, 0, 0, 0, 0, 0, 2, 0], // 3
+    [0, 2, 0, 0, 0, 0, 0, 0, 0, 0], // 4    THIS IS OUR X AXIS
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // 5
     [0, 0, 1, 0, 0, 0, 0, 1, 0, 0], // 6
     [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], // 7
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // 8
+    [0, 0, 0, 0, 0, 2, 0, 0, 0, 0], // 8
     [0, 1, 1, 0, 0, 0, 0, 0, 0, 1]  // 9
 
 ]
@@ -47,16 +47,16 @@ let graphicMap = [
 let tileRules = [ 
 //         THIS IS OUR Y AXIS
 //   0  1  2  3  4  5  6  7  8  9 
-[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // 0
-[0, 0, 0, 0, 0, 0, 0, 0, 1, 0], // 1
-[0, 0, 0, 1, 0, 0, 0, 0, 0, 0], // 2
-[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // 3
-[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // 4    THIS IS OUR xAXIS
-[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // 5
-[0, 0, 1, 0, 0, 0, 0, 1, 0, 0], // 6
-[0, 0, 1, 0, 0, 0, 0, 0, 0, 0], // 7
-[0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // 8
-[0, 1, 1, 0, 0, 0, 0, 0, 0, 1]  // 9
+    [0, 0, 0, 0, 0, 2, 0, 0, 0, 0], // 0
+    [0, 0, 0, 0, 0, 0, 0, 0, 1, 0], // 1
+    [0, 0, 0, 1, 0, 0, 0, 0, 0, 0], // 2
+    [0, 0, 0, 0, 0, 0, 0, 0, 2, 0], // 3
+    [0, 2, 0, 0, 0, 0, 0, 0, 0, 0], // 4    THIS IS OUR xAXIS
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // 5
+    [0, 0, 1, 0, 0, 0, 0, 1, 0, 0], // 6
+    [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], // 7
+    [0, 0, 0, 0, 0, 2, 0, 0, 0, 0], // 8
+    [0, 1, 1, 0, 0, 0, 0, 0, 0, 1]  // 9
 ]
 
 
@@ -64,7 +64,7 @@ function preload() {
     //tilemap textures
     textures[0] = loadImage("assets/floor.png");
     textures[1] = loadImage("assets/tunnels.png");
-    //textures[2] = loadImage("assets/icecream.png");
+    textures[2] = loadImage("assets/icecream.png");
 
 
 
@@ -195,7 +195,7 @@ function game() {
  // coins
  //image(coin, c1X, c1Y, cWidth, cHeight); - paused the game NEEDS FIXING
     
-    text('POINTS: ' , 5, 5);
+    text('POINTS: 0' + pointSystem, 5, 5);
     text('LIVES: 3', 205, 5); // come back to this wednesday
 
 
@@ -333,7 +333,27 @@ class Player {
                 this.isMoving = false;
                 this.dirX = 0;
                 this.dirY = 0;
+
+                // ALL BELOW IS FROM 13/03
+
+                let currentTileX = Math.floor(this.xPos / this.tileSize);
+                let currentTileY = Math.floor(this.yPos / this.tileSize);
+                console.log("currentTileX = ", currentTileX);
+                console.log("currentTileY = ", currentTileY)
+
+              //Checking if tile the player is currently in has an ice cream in it.
+              if (this.tileRules[currentTileY][currentTileX] === 2){
+                console.log("Accessing!")
+                //Change texture for that tile to a floor (i.e remove ice cream)
+                tilemap[currentTileX][currentTileY].texture = textures[0];
+
+
+                //IMPORTANT FOR POINTS
+                pointSystem++;
+              }
+
             }
+
         }
     }
 
@@ -419,7 +439,7 @@ class Bullet{
 
     display(){
         noStroke();
-        ellipse(CENTER, width/2, height/2);
+        //ellipse(CENTER, width/2, height/2);
         fill(255, this.a);
         ellipse(this.x, this.y, this.r * 2);
     }
@@ -455,11 +475,34 @@ function display() {
 //CLOSE MIA CODE
 
 
+/*
+// Anya trial enemy hit by bullet
+Bullet?? class{
+    this.w = w;// or enemy width + height
+    this.h = h;
+    this.hit = false;
+
+
+    over() {
+      if (bullet or dot.PosX > this.x && bullet or dot.PosX  < this.x + this.w && bullet or dot.PosY > this.y && bullet or dot.PosY  < this.y + this.h) {
+        this.hit = true;
+      } else {
+        this.hit = false;
+      }
+    }
+  
+    update() {
+      if (this.hit) {
+       // deletes enemy
+       .remove();
+       =null;
+      }
+    }
+}
 
 
 
-
-
+*/
 //CAMERON CODE
 /*
 //VARIABLES FOR ENEMIES
@@ -491,7 +534,7 @@ function preload() {
 
 
 
-/*MIA CODE
+/*MIA OLD ATTEMPTS AT POINT SYSTEM CODE - ABANDONED AND NO LONGER NEEDED BUT KEEP IT HERE
 
 // COMMENTED NEW CODE 07/03/24 - needs to be correctly placed draw section
  // coin(coinXPos, coinXPos, coinSize);
