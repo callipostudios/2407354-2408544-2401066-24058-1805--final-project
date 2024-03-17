@@ -5,14 +5,47 @@ let numAcross = 10;
 let tileSize = 50;
 let textures = [];
 
+let graphicMap = [ 
+    //         THIS IS OUR Y AXIS
+    //   0  1  2  3  4  5  6  7  8  9 
+        [0, 0, 0, 0, 0, 2, 1, 0, 0, 0], // 0
+        [0, 0, 0, 0, 0, 0, 0, 0, 1, 0], // 1
+        [0, 0, 0, 1, 0, 0, 0, 0, 0, 0], // 2
+        [0, 0, 0, 0, 0, 0, 0, 0, 2, 0], // 3
+        [0, 2, 0, 0, 0, 0, 0, 0, 0, 0], // 4    THIS IS OUR X AXIS
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // 5
+        [0, 0, 1, 0, 0, 0, 0, 1, 0, 0], // 6
+        [0, 0, 3, 0, 0, 0, 0, 0, 0, 0], // 7
+        [0, 0, 0, 0, 0, 2, 0, 0, 0, 0], // 8
+        [0, 1, 1, 0, 0, 0, 1, 1, 0, 1]  // 9
+    
+    ]
+    
+    let tileRules = [ 
+    //         THIS IS OUR Y AXIS
+    //   0  1  2  3  4  5  6  7  8  9 
+        [0, 0, 0, 0, 0, 2, 0, 0, 0, 0], // 0
+        [0, 0, 0, 0, 0, 0, 0, 0, 1, 0], // 1
+        [0, 0, 0, 1, 0, 0, 0, 0, 0, 0], // 2
+        [0, 0, 0, 0, 0, 0, 0, 0, 2, 0], // 3
+        [0, 2, 0, 0, 0, 0, 0, 0, 0, 0], // 4    THIS IS OUR xAXIS
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // 5
+        [0, 0, 1, 0, 0, 0, 0, 1, 0, 0], // 6
+        [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], // 7
+        [0, 0, 0, 0, 0, 2, 0, 0, 0, 0], // 8
+        [0, 1, 1, 0, 0, 0, 0, 0, 0, 1]  // 9
+    ]
+
+
+// VARIABLES FOR STAGE SYSTEM
 let score = 0;
 let stage = 0; // controls what function should be running
 //stage 0 = start 
 //stage 1 = game
 //stage 2 = win
 
-//VARIABLES FOR ICECREAM POINT SYSTEM
 
+//VARIABLES FOR ICECREAM POINT SYSTEM
 let coinSprite; //ice cream
 let pointSystem = 0;
 
@@ -26,7 +59,6 @@ let playerSize = tileSize;
 //VARIABLES FOR ENEMY
 let enemy;
 let enemySprites = [];
-//let enemySpeed = 5;
 let enemySize = tileSize;
 
 //VARIABLES FOR BULLETS
@@ -34,48 +66,23 @@ let dots = [];
 let bullets = [];
 //Work in Progress
 
-let graphicMap = [ 
-//         THIS IS OUR Y AXIS
-//   0  1  2  3  4  5  6  7  8  9 
-    [0, 0, 0, 0, 0, 2, 0, 0, 0, 0], // 0
-    [0, 0, 0, 0, 0, 0, 0, 0, 1, 0], // 1
-    [0, 0, 0, 1, 0, 0, 0, 0, 0, 0], // 2
-    [0, 0, 0, 0, 0, 0, 0, 0, 2, 0], // 3
-    [0, 2, 0, 0, 0, 0, 0, 0, 0, 0], // 4    THIS IS OUR X AXIS
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // 5
-    [0, 0, 1, 0, 0, 0, 0, 1, 0, 0], // 6
-    [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], // 7
-    [0, 0, 0, 0, 0, 2, 0, 0, 0, 0], // 8
-    [0, 1, 1, 0, 0, 0, 0, 0, 0, 1]  // 9
-
-]
-
-let tileRules = [ 
-//         THIS IS OUR Y AXIS
-//   0  1  2  3  4  5  6  7  8  9 
-    [0, 0, 0, 0, 0, 2, 0, 0, 0, 0], // 0
-    [0, 0, 0, 0, 0, 0, 0, 0, 1, 0], // 1
-    [0, 0, 0, 1, 0, 0, 0, 0, 0, 0], // 2
-    [0, 0, 0, 0, 0, 0, 0, 0, 2, 0], // 3
-    [0, 2, 0, 0, 0, 0, 0, 0, 0, 0], // 4    THIS IS OUR xAXIS
-    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // 5
-    [0, 0, 1, 0, 0, 0, 0, 1, 0, 0], // 6
-    [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], // 7
-    [0, 0, 0, 0, 0, 2, 0, 0, 0, 0], // 8
-    [0, 1, 1, 0, 0, 0, 0, 0, 0, 1]  // 9
-]
 
 
 function preload() {
+    
+    
     //tilemap textures
-    textures[0] = loadImage("assets/floor.png");
-    textures[1] = loadImage("assets/tunnels.png");
+    textures[0] = loadImage("assets/grass.png");
+    textures[1] = loadImage("assets/boulder.png");
     textures[2] = loadImage("assets/icecream.png");
+    textures[3] = loadImage("assets/craters.png");
 
 
+    //win screen
+    winIMG = loadImage ("assets/win.png"); 
 
 
-
+    // COIN IMAGES
    //coin system (the coins are icecreams, but to make things easier for myself, they're named coins on the code - mia)
 
    coin = loadImage ("assets/icecream.png"); // STEP 1, IF FAILS COME BACK HERE
@@ -85,7 +92,6 @@ function preload() {
 
 
     //Player sprite
-    // playerSprite = loadImage("orangecat.png");
     playerSprites = {
         up: loadImage("assets/orangecat.png"),
         down: loadImage("assets/orangecat.png"),
@@ -122,6 +128,8 @@ function setup() {
     }
     //Tile creation finished
 
+
+
     //Create Player
     player = new Player(playerSprites, 3, 4, tileSize, playerSpeed, tileSize, tileRules);
 
@@ -140,10 +148,7 @@ function setup() {
 
 
 
-// this creates a stage which flicks through the screens when needed, the game will always start with the start screen, then when clciked move into the game.
-
-
-
+// this creates a stage which flicks through the screens when needed, the game will always start with the start screen, then when clciked move into the game
 
 function draw(){
     if (stage == 0) {
@@ -161,8 +166,16 @@ function draw(){
     if(mouseIsPressed == true){
         stage = 1;
     }
+
+    
+
+    if (pointSystem >= 4 && stage === 1) {
+        stage = 2;
+    }
 }
 
+
+// draw function for the starting screen
 
 function start(){
     background(195, 177, 225);
@@ -170,10 +183,20 @@ function start(){
     text('CLICK TO START', 200, 250);
 }
 
-function win(){
 
+//draw function for the win screen 
+
+function win(){
+    background(195, 177, 225);
+    
+    image(winIMG, 0, 0, width, height);
 }
 
+
+
+
+
+// REPLACES DRAW FUNCTION FOR THE GAME STAGE
 function game() {
     background(0);
     
@@ -186,9 +209,14 @@ function game() {
     }
     // Finishes looping through all tiles within each draw() loop
 
+
+
+    //PLAYER MOVEMENT/DISPLAY
     player.display();
     player.move();
 
+
+    //ENEMY DISPLAY
     enemy.display();
     
     //Bullets
@@ -216,9 +244,8 @@ function game() {
         }
     }
 
- // coins
  
-    
+    // POINTS SYSTEM/ LIFE SYSTEM
     text('POINTS: 0' + pointSystem, 5, 5);
     text('POINTS: 0' + pointSystem , 5, 5);
     text('LIVES: 3', 205, 5); // come back to this wednesday
@@ -231,11 +258,12 @@ function game() {
     //different attempt at inserting points - mia
     
 }
-
+//PLAYER MOVEMENT BY PRESSING KEY
  function keyPressed() {
     player.setDirection();
 }
 
+//PLAYER CLASS
 class Player {
     constructor(sprites, startAcross, startDown, size, speed, tileSize, tileRules) {
         //Attach sprite to key in object
@@ -311,6 +339,10 @@ class Player {
         }
     }
 
+
+
+
+
     //This checks what tile the player wants to move to and if
     //the player is allowed to move there
     checkTargetTile() {
@@ -381,7 +413,7 @@ class Player {
 
         }
     }
-
+//DISPLAY PLAYER
     display() {
         imageMode(CORNER);
         image(this.currentSprite, this.xPos, this.yPos, this.size, this.size);
@@ -389,7 +421,7 @@ class Player {
 }
 
 
-
+//TILE CLASS
 class Tile {
     constructor(texture, across, down, tileSize, tileID) {
         this.texture = texture;
@@ -413,16 +445,18 @@ class Tile {
         noFill();
         rect(this.xPos, this.yPos, this.tileSize, this.tileSize);
 
-        //LABEL
+        LABEL
         noStroke();
         fill(255);
         textAlign(LEFT, TOP);
         
-        text(this.tileID, this.xPos, this.yPos);
-    } // I've hidden the DEBUG method but this is where the code for it goes!
+        
+        //text(this.tileID, this.xPos, this.yPos);
+        //HIDING THE TILE NUMBERS
+    } 
 }
 
-
+// BULLET CLASS (NAMED DOT) THIS GENERATES THE CIRCLE
 class Dot{
     constructor(x, y){
         this.x = x;
@@ -454,6 +488,8 @@ class Dot{
     }
 }
 
+
+// THIS MAKES THE BULLET MOVE ON COMMAND
 class Bullet{
     constructor(x, y){
         this.x = x;
@@ -481,6 +517,7 @@ class Bullet{
     }
 }
 
+
 //Cretates a bullet when pressed
 function mousePressed(){
     let b = new Bullet(player.xPos + tileSize / 2, player.yPos);
@@ -490,14 +527,15 @@ function mousePressed(){
 
 //MIA CODE
 // attempts at point system, further research TBD 
-function display() {
+/*function display() {
     imageMode(CENTER);
     image(sprite, mouseX, mouseY, 50, 50); 
 
 }
+*/
 
 
-
+// ENEMY CLASS
 class Enemy {
     constructor(sprite, x, y, tileSize) {
         this.sprites = sprite;
@@ -508,14 +546,17 @@ class Enemy {
 
     }
     display() {
-        imageMode();
-        image(this.sprites, 8, 1, this.tileSize, tileSize);
+    
         imageMode(CORNER);
-        image(this.sprites, 8, 1, tileSize, tileSize); // 8,1 is going by pixels but we want it to go by tile co ordinates
+        image(this.sprites, 350, 100, tileSize, tileSize); // 8,1 is going by pixels but we want it to go by tile co ordinates
     }
 }
 
-//CLOSE MIA CODE
+
+
+
+
+// ALL CODE BELOW IS CODE FOR FUTURE IMPLEMENTATIONS AND OR CODE THAT DID NOT
 
 
 /*
@@ -543,48 +584,9 @@ Bullet?? class{
     }
 }
 
-class Enemy {
-    constructor(sprite, x, y, tileSize) {
-        this.sprites = sprite;
-        this.enemyx = x;
-        this.enemyy = y;
-        this.enemySize = tileSize;
-       
-    }
-    display() {
-        imageMode(CORNER);
-        image(this.sprites, 8, 1, tileSize, tileSize); // 8,1 is going by pixels but we want it to go by tile co ordinates
-    }
-}
 
 
 */
-//CAMERON CODE
-/*
-//VARIABLES FOR ENEMIES
-let enemy;
-let enemySprites = [];
-let enemySpeed = 5;
-let enemySize = tileSize;
-
-
-function preload() {
-
-    //Enemy sprite
-    // enemySprite = ("dog1.jpeg") for now, 
-    enemySprites = {
-        up: loadImage ("assets/dog1.jpeg")
-        down: loadImage ("assets/dog1.jpeg") 
-        left: loadImage ("assets/dog1.jpeg") 
-        right: loadImage ("assets/dog1.jpeg")
-    }
-}
-// curently trying to make the enemy move from left to right, ending the game if they collide with the player
-*/
-
-//CLOSE CAMERON CODE
-
-
 
 
 
