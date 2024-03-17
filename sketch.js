@@ -219,11 +219,8 @@ function game() {
  // coins
  
     
-<<<<<<< HEAD
     text('POINTS: 0' + pointSystem, 5, 5);
-=======
     text('POINTS: 0' + pointSystem , 5, 5);
->>>>>>> a051c6dfb6ef278b742599949025dda3421525af
     text('LIVES: 3', 205, 5); // come back to this wednesday
 
 
