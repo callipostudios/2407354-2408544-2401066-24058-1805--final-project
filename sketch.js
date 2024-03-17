@@ -23,6 +23,12 @@ let playerSprites = [];
 let playerSpeed = 5;
 let playerSize = tileSize;
 
+//VARIABLES FOR ENEMY
+let enemy;
+let enemySprites = [];
+//let enemySpeed = 5;
+let enemySize = tileSize;
+
 //VARIABLES FOR BULLETS
 let dots = [];
 let bullets = [];
@@ -85,8 +91,16 @@ function preload() {
         down: loadImage("assets/orangecat.png"),
         left: loadImage("assets/orangeleft.png"),
         right: loadImage("assets/orangeright.png")
+
     }
-}
+
+     //Enemy sprite 
+    enemySprites =  loadImage("assets/dog.png")
+       // down: loadImage("assets/dog.png")
+       // left: loadImage("assets/dogleft.png"),
+       // right: loadImage("assassets/dogright.png")
+    }
+
 
 function setup() {
     createCanvas(500, 500);
@@ -116,7 +130,15 @@ function setup() {
         let d = new Dot(width/2, height/2);
         dots.push(d);
     }
+
+
+    //Create Enemy
+    enemy = new Enemy(enemySprites, 8, 8, tileSize, tileSize, tileRules);
+
+
 }
+
+
 
 // this creates a stage which flicks through the screens when needed, the game will always start with the start screen, then when clciked move into the game.
 
@@ -166,6 +188,8 @@ function game() {
 
     player.display();
     player.move();
+
+    enemy.display();
     
     //Bullets
     for(let i = 0; i < dots.length; i++){
@@ -193,9 +217,13 @@ function game() {
     }
 
  // coins
- //image(coin, c1X, c1Y, cWidth, cHeight); - paused the game NEEDS FIXING
+ 
     
+<<<<<<< HEAD
     text('POINTS: 0' + pointSystem, 5, 5);
+=======
+    text('POINTS: 0' + pointSystem , 5, 5);
+>>>>>>> a051c6dfb6ef278b742599949025dda3421525af
     text('LIVES: 3', 205, 5); // come back to this wednesday
 
 
@@ -500,6 +528,19 @@ Bullet?? class{
     }
 }
 
+class Enemy {
+    constructor(sprite, x, y, tileSize) {
+        this.sprites = sprite;
+        this.enemyx = x;
+        this.enemyy = y;
+        this.enemySize = tileSize;
+       
+    }
+    display() {
+        imageMode(CORNER);
+        image(this.sprites, 8, 1, tileSize, tileSize); // 8,1 is going by pixels but we want it to go by tile co ordinates
+    }
+}
 
 
 */
