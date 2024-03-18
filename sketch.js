@@ -417,5 +417,28 @@ coinXPos = random(25, 426); // setting coin location
 
 CLOSE MIA CODE */
 
+// rough psuedo code for sound effect (sound file not attained yet)
+//  Example: Load and play a sound using p5.js
+//let mySound; // Declare a variable to store the sound
+
+//function preload() {
+  // Load the sound file (replace 'path/to/sound.mp3' with your actual sound file)
+  //mySound = loadSound('path/to/sound.mp3');
+//}
+
+//function setup() {
+  //createCanvas(400, 400);
+//}
+
+//function mousePressed() {
+  // Play the sound when the mouse is clicked
+  //mySound.play();
+//}
+
+//function keyPressed() {
+  // Stop the sound when a key is pressed
+  //mySound.stop();
+//}
+
 
 

@@ -61,7 +61,7 @@ Some aspects we will work to add in the future include multiple levels, sound ef
  
 ## Aesthetics
 
-We are going for a very cute hyper style theme, which is reflected in the pastel colours we are using. We are also creating all of our assets in a retro pixel art style. 
+We are going for a very cute hyper style theme, which is reflected in the pastel colours we are using. We are also creating all of our assets in a retro pixel art style. A lot of it is also inspired by older retro style video games. 
 
 ### Moodboard
 ![](images/moodboard.webp) 
