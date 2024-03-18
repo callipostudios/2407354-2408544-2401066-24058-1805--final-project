@@ -76,7 +76,7 @@ function preload() {
     textures[1] = loadImage("assets/boulder.png");
     textures[2] = loadImage("assets/icecream.png");
     textures[3] = loadImage("assets/craters.png");
-
+    textures[4] = loadImage("assets/simplegrass.png");
 
     //win screen
     winIMG = loadImage ("assets/win.png"); 
