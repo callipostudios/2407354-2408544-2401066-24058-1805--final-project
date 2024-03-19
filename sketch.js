@@ -267,7 +267,7 @@ function game() {
     // POINTS SYSTEM/ LIFE SYSTEM
     text('POINTS: 0' + pointSystem, 5, 5);
     text('POINTS: 0' + pointSystem , 5, 5);
-    text('LIVES: 3', 205, 5); // come back to this wednesday
+    text('LIVES: 3', 205, 5); // shows the amount of points and lives the player has. 
 
 
      // attempting to insert points here using if/else.  
