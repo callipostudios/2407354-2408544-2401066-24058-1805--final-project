@@ -58,10 +58,12 @@ let playerSize = tileSize;
 
 //VARIABLES FOR ENEMY
 let enemy;
+let enemySpeed = 5;
 let enemySprites = [];
 let enemySize = tileSize;
 
 let chichi;
+let chichiSpeed= 10;
 let chichiSprite = [];
 let chichiSize = tileSize;
 
@@ -222,8 +224,10 @@ function game() {
 
     //ENEMY DISPLAY
     enemy.display();
+    enemy.move();
     
     chichi.display();
+    chichi.move();
 
     //Bullets
     for (let j = bullets.length - 1; j >= 0; j--){ // moves and displayes the bullets
