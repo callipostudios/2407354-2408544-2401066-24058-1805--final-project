@@ -61,6 +61,10 @@ let enemy;
 let enemySprites = [];
 let enemySize = tileSize;
 
+let chichi;
+let chichiSprite = [];
+let chichiSize = tileSize;
+
 //VARIABLES FOR BULLETS
 let dots = [];
 let bullets = [];
@@ -107,7 +111,7 @@ function preload() {
        // right: loadImage("assassets/dogright.png")
 
        //Chichi sprie
-       //Chichisprite = loadImage("assets/chichileft.png")
+       chichiSprite = loadImage("assets/chichileft.png")
     }
 
 
@@ -141,6 +145,7 @@ function setup() {
 
     //Create Enemy
     enemy = new Enemy(enemySprites, 8, 8, tileSize, tileSize, tileRules);
+    chichi = new Chichi(chichiSprite, 2, 1, tileSize, tileSize, tileRules);
 
 
 }
@@ -218,6 +223,8 @@ function game() {
     //ENEMY DISPLAY
     enemy.display();
     
+    chichi.display();
+
     //Bullets
     for (let j = bullets.length - 1; j >= 0; j--){ // moves and displayes the bullets
         bullets[j].display();
