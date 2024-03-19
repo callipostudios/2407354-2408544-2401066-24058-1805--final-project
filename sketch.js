@@ -133,11 +133,7 @@ function setup() {
     //Create Player
     player = new Player(playerSprites, 3, 4, tileSize, playerSpeed, tileSize, tileRules);
 
-    //Adds new dots to the dots array
-    for(let i = 0; i < dots.length;){
-        let d = new Dot(width/2, height/2);
-        dots.push(d);
-    }
+   
 
 
     //Create Enemy
@@ -220,28 +216,16 @@ function game() {
     enemy.display();
     
     //Bullets
-    for(let i = 0; i < dots.length; i++){
-        dots[i].display();
-        dots[i].move();
-    }
-
-    for (let j = bullets.length - 1; j >= 0; j--) {
+    for (let j = bullets.length - 1; j >= 0; j--){ // moves and displayes the bullets
         bullets[j].display();
         bullets[j].move();
     
-        if(bullets[j].y < 0){
+        if(bullets[j].y < 0){ // sets how high the bullets can reach
           bullets.splice(j,1);
           break;
         }
     
-    for (let i = dots.length - 1; i >= 0; i--) {
-          if(bullets[j].testIntersection(dots[i])){
-            console.log("hit");
-            dots.splice(i,1);
-            bullets.splice(j,1);
-            break;
-          }
-        }
+    
     }
 
  
@@ -268,37 +252,6 @@ function game() {
 
 
 
-// BULLET CLASS (NAMED DOT) THIS GENERATES THE CIRCLE
-class Dot{
-    constructor(x, y){
-        this.x = x;
-        this.y = y;
-        this.xspeed = random(-1, 1);
-        this.yspeed = random(-1, 1);
-        this.r = random(10, 30);
-    }
-
-    display(){
-        noStroke();
-        ellipseMode(CENTER);
-        fill(120, 20, 200);
-        ellipse(this.x, this.y, this.r * 2);
-    }
-
-    move(){
-        this.x += this.xspeed;
-        this.y += this.yspeed;
-        if(this.x >= width + this){
-            this.x = 0 - this.r;
-        } else if (this.x <= 0 - this.r) {
-          this.x = width + this.r;
-        } else if (this.y >= height + this.r) {
-          this.y = 0 - this.r;
-        } else if (this.y <= 0 - this.r) {
-          this.y = height + this.r;  
-        }
-    }
-}
 
 
 // THIS MAKES THE BULLET MOVE ON COMMAND - START OF BULLET CLASS, HAS NOW BEEN MOVED TO BULLET.JS

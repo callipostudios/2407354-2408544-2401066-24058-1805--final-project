@@ -47,8 +47,20 @@ class Player {
                 this.currentSprite = this.sprites.up;
             }
 
+            if (key === "W") {
+                this.dirX = 0;
+                this.dirY = -1; //direction is up!
+                this.currentSprite = this.sprites.up;
+            }
+
             //DOWN
             if (key === "s") {
+                this.dirX = 0;
+                this.dirY = 1; //direction is down!
+                this.currentSprite = this.sprites.down;
+            }
+
+            if (key === "S") {
                 this.dirX = 0;
                 this.dirY = 1; //direction is down!
                 this.currentSprite = this.sprites.down;
@@ -61,8 +73,20 @@ class Player {
                 this.currentSprite = this.sprites.left;
             }
 
+            if (key === "A") {
+                this.dirX = -1; //direction is left!
+                this.dirY = 0; 
+                this.currentSprite = this.sprites.left;
+            }
+
             //RIGHT
             if (key === "d") {
+                this.dirX = 1; //direction is right!
+                this.dirY = 0;
+                this.currentSprite = this.sprites.right;
+            }
+
+            if (key === "D") {
                 this.dirX = 1; //direction is right!
                 this.dirY = 0;
                 this.currentSprite = this.sprites.right;

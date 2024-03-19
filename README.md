@@ -87,7 +87,8 @@ I used the tile mapping code from lesson as a base to create the background of t
 Player movement, animation/art assets & player fighting = Anya
 
 I used the player and player movement code from lesson and from the notion slides. For the player sprites i am currently using placeholders- when the player moves there are 3 different sprites that can appear depending on direction but later on i will change it to be 4 with our original assets. Later on i want to change the player movement to be smoother as having to press a key multiple times just to move in the same direction can be a bit clucnky, i would perhaps make it so that if you hold a key you could move several spaces. For player shooting mechanic i got it to work with mouseX and mouseY but would want this instead be in relation to the current player location. Im not sure how i would go about in accessing the players current possition in the bullet code. Once i get the shooting to work as intended i might try and improve them further by making it so that you can shoot in different directions instead of just upwards. I did some general debugging on the enemy class as before there was an a problem with the image loading and displaying properly. I also did some of the background art and other small bits. Swapped in the updated sprites.
-(Add a cooldown to the shooting)
+cleaned up bullet class and removed the dots class as it was not needed.
+(Add a cooldown to the shooting)(add wasd movement in caps)
 
 
 Point system, picking up objects, life system & read.me file/written work = Mia 
