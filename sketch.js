@@ -66,10 +66,12 @@ let chichiSprite = [];
 let chichiSize = tileSize;
 
 //VARIABLES FOR BULLETS
-let dots = [];
 let bullets = [];
-//Work in Progress
 
+//VARIABLES FOR SFX
+let mainsong;
+let pew;
+let walking;
 
 
 function preload() {
@@ -102,7 +104,7 @@ function preload() {
         left: loadImage("assets/catleft.png"),
         right: loadImage("assets/catright.png")
 
-    }
+        }
 
      //Enemy sprite 
     enemySprites =  loadImage("assets/dogleft.png")
@@ -112,8 +114,26 @@ function preload() {
 
        //Chichi sprie
        chichiSprite = loadImage("assets/chichileft.png")
-    }
 
+        
+       //Sound and music
+       /*
+        mainsong = loadSound("sfx/mainsong.mp3");
+        pew = loadSound("sfx/pew.mp3");
+        walking = loadSound("sfx/walking.mp3");
+
+        */
+       // the function loadSound is not work and is seen as undefined 
+       // im not sure how to fix this
+       /*
+        i would have the mainsong playong from the very start of the game with
+        mainsong.play();
+
+        for pew i would have it so that it only plays when you click the mouse
+        for walking it would play when the player is moving
+       */
+    } 
+    
 
 function setup() {
     createCanvas(500, 500);
@@ -203,6 +223,7 @@ function win(){
 // REPLACES DRAW FUNCTION FOR THE GAME STAGE
 function game() {
     background(0);
+    
     
     // Loops through all tiles each time draw() is called
     for (let across = 0; across < numAcross; across++) {
