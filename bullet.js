@@ -5,6 +5,7 @@ class Bullet{
         this.yspeed = -3;
        // this.xspeed = 0;
         this.r = 3;
+        this.hit = false;
     }
 
     //Makes the bullets
@@ -18,5 +19,12 @@ class Bullet{
         this.y += this.yspeed;
        // this.x += this.xspeed;  //testing 
     }
-
+    /*
+    hit() {
+        if (enemy.x > this.x && enemy.x < this.x && enemy.y > this.y && enemy.y < this.y){
+          this.hit = true;
+          console.log("hit");
+          enemy.remove();
+        } 
+    } */
 }

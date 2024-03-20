@@ -84,12 +84,21 @@ I used the tile mapping code from lesson as a base to create the background of t
 
 
 
-Player movement, animation/art assets & player fighting = Anya
+Player movement, animation/art assets & player fighting, sound = Anya
 
-I used the player and player movement code from lesson and from the notion slides. For the player sprites i am currently using placeholders- when the player moves there are 3 different sprites that can appear depending on direction but later on i will change it to be 4 with our original assets. Later on i want to change the player movement to be smoother as having to press a key multiple times just to move in the same direction can be a bit clucnky, i would perhaps make it so that if you hold a key you could move several spaces. For player shooting mechanic i got it to work with mouseX and mouseY but would want this instead be in relation to the current player location. Im not sure how i would go about in accessing the players current possition in the bullet code. Once i get the shooting to work as intended i might try and improve them further by making it so that you can shoot in different directions instead of just upwards. I did some general debugging on the enemy class as before there was an a problem with the image loading and displaying properly. I also did some of the background art and other small bits. Swapped in the updated sprites.
-cleaned up bullet class and removed the dots class as it was not needed. I tried to add sound but the loadSound is undefined- i believe i might need to donload a sound library for it.
-(Add a cooldown to the shooting)(add wasd movement in caps)
+CODE
+I used the player and player movement code from lesson. When the player moves the sprite will change depending on the players direction/the key that they press. I also added in a caps version of wasd as several times while testing we kept on hitting caps lock causing the player not to move- i did this for better player experience. For the shooting mechanic i removed the dots class as after testing i realised that it wasnt necessary so i removed it. For the bullet class i tried to make it so that if you shoot an enemy its destroyed/dies but wasnt able to. Due to the enemy code not being complete for majority of the the time we had it was difficult to experiment and left me with little time to do so. I did some general debbuging of the enemy class alonside Alisha to fix an issue with the enemy display as it would either cause the enemy to take up the whole canvas or break the whole project. I updated the placeholder sprites with the newer ones and added some comments for my sections of the code.
+I tried to add sound however after seeing that the loadSound function was undefined i realised that i would need to use a sound library for it- i was unsure of how to get it to work. i tried adding its path to the index but was still getting errors saying that i needed a webpack but even after adding it it still didnt work. I organised both the SFX and libraries into their respective folders if i had more time i would try to properly implement them. 
 
+ART
+I drew the background sprites for the tilemap, icecream, start and win screen
+-For the background sprites i decided togo for a purple alien feel to go along with the space asnd astronaut theme with some pops of yellow for things like the rocks which the player cannot pass through as it will contrast the purple and indicate that that tile is different from the rest.
+-For the icecream i kept the design relatively simple with the green minty icecream ball serving to differentiate it from the yellow rocks and to make it stand out. I ran into an issue when loading the image as despite saving it as a transparent png when loaded onto the code it would be given a black background- to go around this i added one of the tilemap backgrounds behind the icecream- it doesnt work as well as it would if it was an actual transparent png.
+-For the start screen i maintained the purple space theme with a pixel art starry sky with fluffy clouds that reflect the silly atmosphere of the story
+-For the win screen i drew the protaganist, callipo eating the icecream that he collected in space- making sure that the icecreams would be the same as the ones featured in game for some small added continuity
+
+FUTURE IMPLEMENTATIONS
+If i had more time i would make changes such as allowing for continuos player movement instead of having to press the same button over and over again. I would properly add the shooting mechanic. Adding a cooldown to how many times you can shoot. Finally i would add sound effects to things like walking, picking up the icecream, shooting and background music
 
 Point system, picking up objects, life system & read.me file/written work = Mia 
 

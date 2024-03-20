@@ -246,6 +246,7 @@ function game() {
     //ENEMY DISPLAY
     enemy.display();
     enemy.move();
+
     
     chichi.display();
     chichi.move();
@@ -263,6 +264,13 @@ function game() {
     
     }
 
+    // Experimenting
+    if (enemy.x > bullets.x && enemy.x < bullets.x && enemy.y > bullets.y && enemy.y < bullets.y) {
+        this.hit = true;
+        console.log("hit");
+        enemy.remove();
+      } 
+
  
     // POINTS SYSTEM/ LIFE SYSTEM
     text('POINTS: 0' + pointSystem, 5, 5);
@@ -276,6 +284,8 @@ function game() {
 
     //different attempt at inserting points - mia
     
+
+  
 }
 //PLAYER MOVEMENT BY PRESSING KEY
  function keyPressed() {
