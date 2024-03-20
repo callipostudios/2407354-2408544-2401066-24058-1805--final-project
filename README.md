@@ -81,26 +81,28 @@ Callipo walking right
 ### Alisha
 Tile mapping & Scene changes
 
+    CODE 
+
     I used the tile mapping code from lesson as a base to create the background of the game. I had used placeholder assets until our art assets had been created, which then i just subsititued the art into it. 
 
-    I want to improve on the tile mapping by firstly making it bigger and also adding more strategic collisions.
-
-     I tried to create a kind of collision where if the player hits a certain square on the tile map, they get sucked in and pop out of another section, a kind of tunnel system. I used the logic I had thought up with Hugh as well as the stage code I had already implemeted to help with this. I made sure to use If/Else statments and collisions however it does not seem to work. In future I will figure out why it does not work.
-     it gives the error that  it "cannot access 'tilemap' before initialisation". I tried researching what this emans and how to debug it however I cannot figure it out.
+    I tried to create a kind of collision where if the player hits a certain square on the tile map, they get sucked in and pop out of another section, a kind of tunnel system. I used the logic I had thought up with Hugh as well as the stage code I had already implemeted to help with this. I made sure to use If/Else statments and collisions however it does not seem to work. In future I will figure out why it does not work.
+    it gives the error that  it "cannot access 'tilemap' before initialisation". I tried researching what this emans and how to debug it however I cannot figure it out.
 
     I also created the stage scene mechanic which controls what function is displayed when. I set it up so it always first opens on the title starting screen, and after the player clicks the screen - which is the condition- it will increment the stage value by 1 causing the scene to change to the game play and allowing the user to play the game. I also want to improve on this by adding various different levels and also a condition that if the player dies by getting hit a certain nummber of times, the level resets. As well as if they manage to reach the end, it moves them onto the next level until they reach the last level and win.
  
-    I also want to create a pause menu to so they can pause the screen whenever they want to. I will research and figure out how to do this later on.
-
-    I also debugged the enemies code, as the image would not display correctly (it was stretched and warped funny) I figured out hwy this is as the x,y was in regards to pixels not by tile ID. 
+    I also debugged the enemies code with Ana, as the image would not display correctly (it was stretched and warped funny) I figured out why this is was as the x,y was in regards to pixels not by tile ID. 
 
     Overall I helped with debugging others code, such as the point system as it would display then dissapear when you would press WASD to move the player or to shoot.
 
-    I also organised the files, makinng sure the images were seperated and such, I tried making folders inside the asset folder with more organised structure however the images wold not load when i linked them so i forego this.  
+    I also organised the files, makinng sure the images were seperated and such, I tried making folders inside the asset folder with more organised structure however the images wold not load when i linked them so i foregoed this.  
 
     I also designed the layout of the game, making sure that the player needs to defeat the enemies before they can get the items. This is to enhance th egame play however as the enemies are not working in regards to them shooting, this kind of renders my efforts null.
 
     I also wrote and formated majority of the README making sure evrything was clear and well written.
+
+    FUTURE IMPLEMENTATION
+    
+    If I had more time i would defiently research more into the tunnel system and try to make that work. I would also add in a pause menu screen for the audiences playability. I would also like to create a lot more levels, with doors that let you go from level to level. We focused more on the 1st level so we weren't able to create anymore. I would also like to create trap like sections, where the player gets stuck and their speed decreaes in certaina reas of the tile map i feel like that would be a fun addition to the game. I want to improve on the tile mapping by firstly making it bigger and also adding more strategic collisions.
 
 ### Anya
 Player movement, animation/art assets & player fighting, sound
@@ -109,7 +111,7 @@ Player movement, animation/art assets & player fighting, sound
 
     I used the player and player movement code from lesson. When the player moves the sprite will change depending on the players direction/the key that they press. I also added in a caps version of wasd as several times while testing we kept on hitting caps lock causing the player not to move- i did this for better player experience. For the shooting mechanic i removed the dots class as after testing i realised that it wasnt necessary so i removed it. For the bullet class i tried to make it so that if you shoot an enemy its destroyed/dies but wasnt able to. Due to the enemy code not being complete for majority of the the time we had it was difficult to experiment and left me with little time to do so. I did some general debbuging of the enemy class alonside Alisha to fix an issue with the enemy display as it would either cause the enemy to take up the whole canvas or break the whole project. I updated the placeholder sprites with the newer ones and added some comments for my sections of the code.
     
-     I tried to add sound however after seeing that the loadSound function was undefined i realised that i would need to use a sound library for it- i was unsure of how to get it to work. i tried adding its path to the index but was still getting errors saying that i needed a webpack but even after adding it it still didnt work. I organised both the SFX and libraries into their respective folders if i had more time i would try to properly implement them. 
+    I tried to add sound however after seeing that the loadSound function was undefined i realised that i would need to use a sound library for it- i was unsure of how to get it to work. i tried adding its path to the index but was still getting errors saying that i needed a webpack but even after adding it it still didnt work. I organised both the SFX and libraries into their respective folders if i had more time i would try to properly implement them. 
 
     ART
 
