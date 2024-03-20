@@ -44,7 +44,8 @@ This is what we referenced in order to create a shooting mechanic. We are lookin
 https://www.youtube.com/watch?v=JHBuRkJObIg&list=PLBDInqUM5B25FzygoJ9Ifg1TZXmIHz4zh&index=7
 Referenced this video to create game stages and to help create a simple start screen. Further I will take the code and adjust it to make various different levels and an end screen.
 
-All of our assets currently are images found online. They are simply placeholder images while we create our own assets.
+https://github.com/processing/p5.js-sound/blob/main/lib/p5.sound.js
+Link to the sound library
 
 ## Themes 
 
