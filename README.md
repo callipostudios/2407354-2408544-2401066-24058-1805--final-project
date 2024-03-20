@@ -101,8 +101,8 @@ Tile mapping & Scene changes
     I also wrote and formated majority of the README making sure evrything was clear and well written.
 
     FUTURE IMPLEMENTATION
-    
-    If I had more time i would defiently research more into the tunnel system and try to make that work. I would also add in a pause menu screen for the audiences playability. I would also like to create a lot more levels, with doors that let you go from level to level. We focused more on the 1st level so we weren't able to create anymore. I would also like to create trap like sections, where the player gets stuck and their speed decreaes in certaina reas of the tile map i feel like that would be a fun addition to the game. I want to improve on the tile mapping by firstly making it bigger and also adding more strategic collisions.
+
+    If I had more time i would defiently research more into the tunnel system and try to make that work. I would also add in a pause menu screen for the audiences playability. I would also like to create a lot more levels, with doors that let you go from level to level. We focused more on the 1st level so we weren't able to create anymore. I would also like to create trap like sections, where the player gets stuck and their speed decreaes in certaina reas of the tile map i feel like that would be a fun addition to the game. I want to improve on the tile mapping by firstly making it bigger and also adding more strategic collisions. I also figured out a bug we had, regarding the ice creams and points system. We could nto figure out why only osmetimes it would move us onto the win screen even if we hadnt fulfilled the requiremnt of collecting all 3 ice creams. I relaised that the tile itself is regarded as a point, so even after the the ice cream is collected, it still increments the point counter. I would like to fix this in the future so the tile does not count towards the point counter.
 
 ### Anya
 Player movement, animation/art assets & player fighting, sound
