@@ -5,6 +5,8 @@ let numAcross = 10;
 let tileSize = 50;
 let textures = [];
 
+
+
 let graphicMap = [ 
     //         THIS IS OUR Y AXIS
     //   0  1  2  3  4  5  6  7  8  9 
@@ -87,7 +89,8 @@ function preload() {
     textures[4] = loadImage("assets/simplegrass.png");
 
     //win screen
-    winIMG = loadImage ("assets/win.png"); 
+    winIMG = loadImage ("assets/win.webp"); 
+    startIMG = loadImage ("assets/start.webp"); 
 
 
     // COIN IMAGES
@@ -142,6 +145,20 @@ function setup() {
 
     let tileID = 0; // sets our tileID for the first tile we'll make
 
+    //variables for tunnels
+    let collisionMap = 0;
+    let tunnelLink = null;
+
+    //creates til A
+    if (PI === 2 && j === 0){
+        collisionMap = 2;; //marks tunnel
+        tunnelLink = createVector(2 * tileSize, 7 * tileSize); //this links it to tile B
+    }
+
+//creates a new tile object to add to tilemap array
+    tilemap.push(new Tile(8, 8, tileSize, collisionMap. tunnelLink));
+    
+    
     //Creates all tiles
     for (let across = 0; across < numAcross; across++) {
         tilemap[across] = [];
@@ -206,7 +223,7 @@ function draw(){
 function start(){
     background(195, 177, 225);
     
-    text('CLICK TO START', 200, 250);
+    image(startIMG, 0, 0, width, height);
 }
 
 
@@ -242,7 +259,7 @@ function game() {
     player.display();
     player.move();
 
-
+    
     //ENEMY DISPLAY
     enemy.display();
     enemy.move();
@@ -250,6 +267,7 @@ function game() {
     chichi.display();
     chichi.move();
 
+    
     //Bullets
     for (let j = bullets.length - 1; j >= 0; j--){ // moves and displayes the bullets
         bullets[j].display();
@@ -276,13 +294,19 @@ function game() {
 
     //different attempt at inserting points - mia
     
+    
 }
 //PLAYER MOVEMENT BY PRESSING KEY
  function keyPressed() {
     player.setDirection();
 }
 
-
+// checks to see if the player is on tile A to move them to Tile B
+for (let tilemap of tilemap){
+    if (player.isOnTile(tilemap) && tilemap.collisionMap === 2 && tilemap.tunnelLink !== null){
+        player.moveToTile(tile.tunnelLink);
+    }
+}
 
 
 
