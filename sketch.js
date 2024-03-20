@@ -5,35 +5,37 @@ let numAcross = 10;
 let tileSize = 50;
 let textures = [];
 
+
+
 let graphicMap = [ 
     //         THIS IS OUR Y AXIS
     //   0  1  2  3  4  5  6  7  8  9 
-        [4, 4, 4, 4, 4, 2, 1, 4, 4, 4], // 0
-        [4, 4, 4, 4, 4, 4, 4, 4, 1, 4], // 1
-        [4, 4, 4, 1, 4, 4, 4, 4, 4, 4], // 2
-        [4, 4, 4, 4, 4, 4, 4, 4, 4, 4], // 3
-        [4, 2, 4, 4, 4, 4, 4, 4, 4, 4], // 4    THIS IS OUR X AXIS
-        [4, 4, 4, 4, 4, 4, 4, 4, 4, 4], // 5
-        [4, 4, 1, 4, 4, 4, 4, 1, 4, 4], // 6
-        [4, 4, 3, 4, 4, 4, 4, 4, 4, 4], // 7
-        [4, 4, 4, 4, 4, 2, 4, 4, 4, 4], // 8
-        [4, 1, 1, 4, 4, 4, 1, 1, 4, 1]  // 9
+        [0, 0, 4, 1, 4, 2, 1, 0, 0, 0], // 0
+        [1, 4, 4, 3, 4, 1, 3, 3, 1, 3], // 1
+        [0, 3, 4, 1, 4, 4, 3, 4, 4, 4], // 2
+        [4, 4, 4, 4, 1, 4, 4, 4, 4, 1], // 3
+        [1, 2, 1, 4, 4, 4, 4, 4, 4, 1], // 4    THIS IS OUR X AXIS
+        [4, 3, 1, 4, 4, 3, 1, 4, 4, 3], // 5
+        [4, 4, 4, 0, 4, 4, 3, 1, 4, 3], // 6
+        [4, 4, 0, 0, 4, 1, 1, 0, 1, 0], // 7
+        [3, 0, 4, 4, 4, 2, 4, 4, 3, 0], // 8
+        [0, 0, 1, 4, 4, 4, 1, 1, 0, 1]  // 9
     
     ]
     
     let tileRules = [ 
     //         THIS IS OUR Y AXIS
-    //   0  1  2  3  4  5  6  7  8  9 
-        [0, 0, 0, 0, 0, 2, 1, 0, 0, 0], // 0
-        [0, 0, 0, 0, 0, 0, 0, 0, 1, 0], // 1
-        [0, 0, 0, 1, 0, 0, 0, 0, 0, 0], // 2
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // 3
-        [0, 2, 0, 0, 0, 0, 0, 0, 0, 0], // 4    THIS IS OUR xAXIS
-        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // 5
-        [0, 0, 1, 0, 0, 0, 0, 1, 0, 0], // 6
-        [0, 0, 1, 0, 0, 0, 0, 0, 0, 0], // 7
-        [0, 0, 0, 0, 0, 2, 0, 0, 0, 0], // 8
-        [0, 1, 1, 0, 0, 0, 1, 1, 0, 1]  // 9
+        [0, 0, 4, 1, 4, 2, 1, 0, 0, 0], // 0
+        [1, 4, 4, 3, 4, 1, 3, 3, 1, 3], // 1
+        [0, 3, 4, 1, 4, 4, 3, 4, 4, 4], // 2
+        [4, 4, 4, 4, 1, 4, 4, 4, 4, 1], // 3
+        [1, 2, 1, 4, 4, 4, 4, 4, 4, 1], // 4    THIS IS OUR X AXIS
+        [4, 3, 1, 4, 4, 3, 1, 4, 4, 3], // 5
+        [4, 4, 4, 0, 4, 4, 3, 1, 4, 3], // 6
+        [4, 4, 0, 0, 4, 1, 1, 0, 1, 0], // 7
+        [3, 0, 4, 4, 4, 2, 4, 4, 3, 0], // 8
+        [0, 0, 1, 4, 4, 4, 1, 1, 0, 1]  // 9
+    
     ]
 
 
@@ -87,7 +89,8 @@ function preload() {
     textures[4] = loadImage("assets/simplegrass.png");
 
     //win screen
-    winIMG = loadImage ("assets/win.png"); 
+    winIMG = loadImage ("assets/win.webp"); 
+    startIMG = loadImage ("assets/start.webp"); 
 
 
     // COIN IMAGES
@@ -142,6 +145,20 @@ function setup() {
 
     let tileID = 0; // sets our tileID for the first tile we'll make
 
+    //variables for tunnels
+    let collisionMap = 0;
+    let tunnelLink = null;
+
+    //creates til A
+    if (PI === 2 && j === 0){
+        collisionMap = 2;; //marks tunnel
+        tunnelLink = createVector(2 * tileSize, 7 * tileSize); //this links it to tile B
+    }
+
+//creates a new tile object to add to tilemap array
+    tilemap.push(new Tile(8, 8, tileSize, collisionMap. tunnelLink));
+    
+    
     //Creates all tiles
     for (let across = 0; across < numAcross; across++) {
         tilemap[across] = [];
@@ -185,6 +202,7 @@ function draw(){
         game();
     }
 
+
     if (stage == 2) {
         win();
     }
@@ -206,7 +224,7 @@ function draw(){
 function start(){
     background(195, 177, 225);
     
-    text('CLICK TO START', 200, 250);
+    image(startIMG, 0, 0, width, height);
 }
 
 
@@ -242,14 +260,16 @@ function game() {
     player.display();
     player.move();
 
-
+    
     //ENEMY DISPLAY
     enemy.display();
     enemy.move();
+
     
     chichi.display();
     chichi.move();
 
+    
     //Bullets
     for (let j = bullets.length - 1; j >= 0; j--){ // moves and displayes the bullets
         bullets[j].display();
@@ -262,6 +282,13 @@ function game() {
     
     
     }
+
+    // Experimenting
+    if (enemy.x > bullets.x && enemy.x < bullets.x && enemy.y > bullets.y && enemy.y < bullets.y) {
+        this.hit = true;
+        console.log("hit");
+        enemy.remove();
+      } 
 
  
     // POINTS SYSTEM/ LIFE SYSTEM
@@ -276,13 +303,21 @@ function game() {
 
     //different attempt at inserting points - mia
     
+
+  
+    
 }
 //PLAYER MOVEMENT BY PRESSING KEY
  function keyPressed() {
     player.setDirection();
 }
 
-
+// checks to see if the player is on tile A to move them to Tile B
+for (let tilemap of tilemap){
+    if (player.isOnTile(tilemap) && tilemap.collisionMap === 2 && tilemap.tunnelLink !== null){
+        player.moveToTile(tile.tunnelLink);
+    }
+}
 
 
 
@@ -309,8 +344,6 @@ function mousePressed(){
 }
 */
 
-
-// ENEMY CLASS
 
 
 
@@ -430,3 +463,27 @@ CLOSE MIA CODE */
 
 
 
+//Cam code, tried to add in another system that removed the enemy sprites if hit with a bullet 
+// 
+//const sprite = enemySprites;
+   // const obstacle = Bullet;
+
+
+//function isColliding(rect1, rect2) {
+     // const rect1Bounds = rect1.getBoundingClientRect();
+    //  const rect2Bounds = rect2.getBoundingClientRect();
+    //  return !(rect1Bounds.right < rect2Bounds.left || 
+      //         rect1Bounds.left > rect2Bounds.right || 
+     //          rect1Bounds.bottom < rect2Bounds.top || 
+     //          rect1Bounds.top > rect2Bounds.bottom);
+ //   }
+
+  //  function checkCollisionAndHideSprite() {
+  //    if (isColliding(sprite, obstacle)) {
+  //      sprite.style.display = 'none';
+  //    }
+  //  }
+
+  //  setInterval(checkCollisionAndHideSprite, 10);
+
+  // the same would be for chichi if i could get it to work
