@@ -264,6 +264,7 @@ function game() {
     //ENEMY DISPLAY
     enemy.display();
     enemy.move();
+
     
     chichi.display();
     chichi.move();
@@ -282,6 +283,13 @@ function game() {
     
     }
 
+    // Experimenting
+    if (enemy.x > bullets.x && enemy.x < bullets.x && enemy.y > bullets.y && enemy.y < bullets.y) {
+        this.hit = true;
+        console.log("hit");
+        enemy.remove();
+      } 
+
  
     // POINTS SYSTEM/ LIFE SYSTEM
     text('POINTS: 0' + pointSystem, 5, 5);
@@ -295,6 +303,8 @@ function game() {
 
     //different attempt at inserting points - mia
     
+
+  
     
 }
 //PLAYER MOVEMENT BY PRESSING KEY
@@ -334,8 +344,6 @@ function mousePressed(){
 }
 */
 
-
-// ENEMY CLASS
 
 
 
@@ -455,3 +463,27 @@ CLOSE MIA CODE */
 
 
 
+//Cam code, tried to add in another system that removed the enemy sprites if hit with a bullet 
+// 
+//const sprite = enemySprites;
+   // const obstacle = Bullet;
+
+
+//function isColliding(rect1, rect2) {
+     // const rect1Bounds = rect1.getBoundingClientRect();
+    //  const rect2Bounds = rect2.getBoundingClientRect();
+    //  return !(rect1Bounds.right < rect2Bounds.left || 
+      //         rect1Bounds.left > rect2Bounds.right || 
+     //          rect1Bounds.bottom < rect2Bounds.top || 
+     //          rect1Bounds.top > rect2Bounds.bottom);
+ //   }
+
+  //  function checkCollisionAndHideSprite() {
+  //    if (isColliding(sprite, obstacle)) {
+  //      sprite.style.display = 'none';
+  //    }
+  //  }
+
+  //  setInterval(checkCollisionAndHideSprite, 10);
+
+  // the same would be for chichi if i could get it to work
